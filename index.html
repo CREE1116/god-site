@@ -1,0 +1,507 @@
+<title>신이 세상을 만들 때</title>
+<style>
+  :root {
+    --paper: #f3ede0;
+    --ink: #1c1a15;
+    --ink-soft: #4a453b;
+    --line: rgba(28, 26, 21, 0.14);
+    --spark: #3f7dd4;
+    --spark-soft: #dfe9fa;
+    --gold: #9c7a3f;
+    --card: #ffffff;
+    --card-shadow: rgba(28, 26, 21, 0.08);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #0c0e15;
+      --ink: #ece6d8;
+      --ink-soft: #a7a091;
+      --line: rgba(236, 230, 216, 0.14);
+      --spark: #6fa8f0;
+      --spark-soft: rgba(111, 168, 240, 0.14);
+      --gold: #c9a15a;
+      --card: #12141d;
+      --card-shadow: rgba(0, 0, 0, 0.4);
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #0c0e15;
+    --ink: #ece6d8;
+    --ink-soft: #a7a091;
+    --line: rgba(236, 230, 216, 0.14);
+    --spark: #6fa8f0;
+    --spark-soft: rgba(111, 168, 240, 0.14);
+    --gold: #c9a15a;
+    --card: #12141d;
+    --card-shadow: rgba(0, 0, 0, 0.4);
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "Malgun Gothic", sans-serif;
+    line-height: 1.75;
+    overflow-x: hidden;
+  }
+  ::selection { background: var(--spark-soft); color: var(--ink); }
+
+  .eyebrow {
+    font-family: ui-serif, Georgia, "Noto Serif KR", serif;
+    font-style: italic;
+    font-size: 0.78rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin: 0 0 0.9rem;
+  }
+  h1, h2, h3 {
+    font-family: ui-serif, Georgia, "Noto Serif KR", serif;
+    font-weight: 600;
+    text-wrap: balance;
+    margin: 0;
+  }
+  .rule {
+    border: none;
+    border-top: 1px solid var(--line);
+    margin: 0;
+  }
+
+  /* ---------- hero ---------- */
+  .hero {
+    position: relative;
+    min-height: 84vh;
+    display: flex;
+    align-items: flex-end;
+    background: #05060a;
+  }
+  .hero img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.62;
+  }
+  .hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(5,6,10,0.15) 0%, rgba(5,6,10,0.35) 55%, rgba(5,6,10,0.95) 100%);
+  }
+  .hero-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 3.5rem 1.75rem 4.5rem;
+    text-align: center;
+    color: #f3ede0;
+  }
+  .hero-inner .eyebrow { color: #d9c48e; opacity: 0.9; }
+  .hero-inner h1 {
+    font-size: clamp(2.1rem, 5.4vw, 3.4rem);
+    line-height: 1.28;
+    letter-spacing: -0.01em;
+  }
+  .hero-inner p {
+    margin: 1.4rem auto 0;
+    max-width: 46ch;
+    font-size: 1.02rem;
+    color: rgba(243, 237, 224, 0.82);
+  }
+  .hero-tags {
+    margin-top: 1.9rem;
+    display: flex;
+    justify-content: center;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+  }
+  .hero-tags span {
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    padding: 0.35rem 0.75rem;
+    border: 1px solid rgba(243, 237, 224, 0.28);
+    border-radius: 999px;
+    color: rgba(243, 237, 224, 0.75);
+  }
+
+  /* ---------- shared section shell ---------- */
+  section {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 5rem 1.75rem;
+  }
+  section + .rule-wrap {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 0 1.75rem;
+  }
+  .lede {
+    font-size: 1.08rem;
+    color: var(--ink-soft);
+    max-width: 58ch;
+  }
+
+  /* ---------- prologue ---------- */
+  .prologue-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 220px) 1fr;
+    gap: 2.4rem;
+    align-items: start;
+  }
+  .prologue-grid figure {
+    margin: 0;
+  }
+  .prologue-grid img {
+    width: 100%;
+    border-radius: 6px;
+    display: block;
+    box-shadow: 0 20px 40px var(--card-shadow);
+  }
+  .prologue-grid figcaption {
+    margin-top: 0.6rem;
+    font-size: 0.74rem;
+    color: var(--ink-soft);
+    letter-spacing: 0.02em;
+  }
+  blockquote {
+    margin: 0;
+    font-size: 1.14rem;
+    line-height: 1.9;
+  }
+  blockquote p { margin: 0 0 1.1rem; }
+  blockquote p:last-child { margin-bottom: 0; }
+  blockquote .voice {
+    color: var(--gold);
+    font-style: italic;
+  }
+  @media (max-width: 620px) {
+    .prologue-grid { grid-template-columns: 1fr; }
+    .prologue-grid figure { max-width: 200px; }
+  }
+
+  /* ---------- world rules ---------- */
+  .rule-list {
+    list-style: none;
+    margin: 2rem 0 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .rule-list li {
+    padding-left: 1.4rem;
+    border-left: 2px solid var(--line);
+  }
+  .rule-list .rid {
+    display: block;
+    font-family: ui-monospace, "SF Mono", Menlo, monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.03em;
+    color: var(--spark);
+    margin-bottom: 0.35rem;
+  }
+  .rule-list p { margin: 0; color: var(--ink-soft); font-size: 0.96rem; }
+  .rule-list strong { color: var(--ink); font-weight: 600; }
+
+  /* ---------- tier scale ---------- */
+  .tiers {
+    margin-top: 2.2rem;
+    display: flex;
+    flex-direction: column;
+  }
+  .tier {
+    display: grid;
+    grid-template-columns: 3.2rem 1fr;
+    gap: 1.1rem;
+    padding: 1.5rem 0;
+    border-top: 1px solid var(--line);
+  }
+  .tier:last-child { border-bottom: 1px solid var(--line); }
+  .tier .num {
+    font-family: ui-serif, Georgia, serif;
+    font-style: italic;
+    font-size: 1.6rem;
+    color: var(--gold);
+    font-variant-numeric: tabular-nums;
+  }
+  .tier h3 { font-size: 1.05rem; margin-bottom: 0.4rem; }
+  .tier p { margin: 0; color: var(--ink-soft); font-size: 0.94rem; }
+
+  /* ---------- character ---------- */
+  .char-card {
+    margin-top: 2.2rem;
+    display: grid;
+    grid-template-columns: minmax(0, 240px) 1fr;
+    gap: 2.4rem;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 1.8rem;
+    box-shadow: 0 24px 50px var(--card-shadow);
+  }
+  .char-card img {
+    width: 100%;
+    border-radius: 6px;
+    display: block;
+  }
+  .char-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.2rem;
+  }
+  .char-sub {
+    font-size: 0.82rem;
+    color: var(--gold);
+    letter-spacing: 0.03em;
+    margin: 0 0 1.1rem;
+  }
+  .char-card p { color: var(--ink-soft); font-size: 0.94rem; margin: 0 0 0.9rem; }
+  .char-card p:last-child { margin-bottom: 0; }
+  .lines {
+    list-style: none;
+    margin: 1.2rem 0 0;
+    padding: 1rem 0 0;
+    border-top: 1px dashed var(--line);
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+  }
+  .lines li {
+    font-size: 0.92rem;
+    font-style: italic;
+    color: var(--ink);
+  }
+  .lines li::before { content: "\201C"; color: var(--gold); margin-right: 0.2rem; }
+  @media (max-width: 620px) {
+    .char-card { grid-template-columns: 1fr; }
+    .char-card img { max-width: 180px; }
+  }
+
+  /* ---------- lore ---------- */
+  .lore-grid {
+    margin-top: 2.2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.2rem;
+  }
+  .lore-card {
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 1.3rem 1.4rem;
+  }
+  .lore-card .kw {
+    font-family: ui-monospace, "SF Mono", Menlo, monospace;
+    font-size: 0.7rem;
+    color: var(--spark);
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  .lore-card h3 { font-size: 1rem; margin-bottom: 0.5rem; }
+  .lore-card p { margin: 0; font-size: 0.88rem; color: var(--ink-soft); }
+  @media (max-width: 620px) {
+    .lore-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ---------- start ---------- */
+  .start {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 2rem 2.1rem;
+    margin-top: 2rem;
+  }
+  .start p { color: var(--ink-soft); font-size: 0.96rem; margin: 0; }
+  .start .caret {
+    display: inline-block;
+    margin-top: 1.1rem;
+    font-family: ui-monospace, "SF Mono", Menlo, monospace;
+    font-size: 0.82rem;
+    color: var(--spark);
+  }
+
+  footer {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 3rem 1.75rem 5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    color: var(--ink-soft);
+    font-size: 0.78rem;
+    letter-spacing: 0.02em;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .fade-in {
+      animation: fadeIn 0.9s ease-out both;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  }
+</style>
+
+<div class="hero">
+  <img src=\"images/banner.png\" alt=\"무너진 흰 기둥 사이로 빛이 쏟아지는 문턱의 공간\" />
+  <div class="hero-inner fade-in">
+    <p class="eyebrow">World-Sim Story Chat</p>
+    <h1>신이 세상을 만들 때</h1>
+    <p>선대신에게 지구 하나를 통째로 넘겨받은 새로운 신. 무엇을 하든 세계는 뜻대로 자라지 않는다 — 창조와 방임 사이, 당신이 멈추는 자리가 곧 엔딩이다.</p>
+    <div class="hero-tags">
+      <span>담담한 다큐멘터리 내레이션</span>
+      <span>강제 엔딩 없음</span>
+      <span>1턴 = 1년</span>
+    </div>
+  </div>
+</div>
+
+<section>
+  <p class="eyebrow">Prologue</p>
+  <div class="prologue-grid">
+    <figure>
+      <img src=\"images/god.png\" alt=\"반쯤 풀린 회색 눈, 은백색 장발의 선대신 클로즈업\" />
+      <figcaption>선대신 — 이름 없음, "그"로만 지칭됨</figcaption>
+    </figure>
+    <blockquote>
+      <p>계단 끝에 선 이는 사람의 얼굴을 하고 있었지만, 눈은 오래전에 감기다 만 것처럼 반쯤 풀려 있었다. 빛도 바람도 없는 곳에서 새하얀 옷자락만 홀로 나부끼고, 무너진 기둥 사이로는 끝없는 빛이 쏟아지고 있었다.</p>
+      <p>그의 손바닥 위에 작고 푸른 공 하나가 떠 있었다. 아직 아무 소리도, 숨결도 없는 공이었다.</p>
+      <p><span class="voice">"이걸로 몇 개째더라."</span> 그는 세는 것도 지친 얼굴로 웃었다. "만들고, 지켜보고, 부쉈어. 수천 번쯤 하다 보면 슬슬 궁금해지거든 — 내가 아니라 다른 누가 하면 어떻게 될지."</p>
+      <p>그 말이 끝나기도 전에, 공은 이미 당신의 두 손 안에 있었다.</p>
+      <p><span class="voice">"규칙 같은 건 없어. 대가도 없고."</span> 그는 이미 돌아서 있었다. 목소리만 무너진 기둥 사이로 흩어졌다. "그냥 네 마음대로 해봐."</p>
+      <p>빛이 걷히면, 당신의 손 안에는 아직 아무것도 살지 않은 세계 하나만 남아 있을 것이다.</p>
+    </blockquote>
+  </div>
+</section>
+
+<div class="rule-wrap"><hr class="rule" /></div>
+
+<section>
+  <p class="eyebrow">World Rules</p>
+  <h2 style="font-size:1.6rem;">권능은 전능하지만, 결과는 아니다</h2>
+  <p class="lede" style="margin-top:0.9rem;">개입은 "결과"가 아니라 "조건"을 세계에 던지는 것 — 창조된 모든 것은 창조자의 뜻이 아니라 자기 자신의 생존 논리를 따른다.</p>
+  <ul class="rule-list">
+    <li>
+      <span class="rid">rule.omnipotence</span>
+      <p>{{user}}에게 물리적으로 불가능한 개입은 없다. 다만 지적 생명체 등장 이후, 신의 실존은 그들이 관측한 <strong>기적·재해로만</strong> 체감된다.</p>
+    </li>
+    <li>
+      <span class="rid">rule.drift</span>
+      <p>생명 이전엔 생존압에 따른 이탈, 문명 이후엔 구성원의 욕망·이해관계에 따른 이탈 — <strong>표현형만 다른 하나의 원리</strong>다.</p>
+    </li>
+    <li>
+      <span class="rid">rule.predictability</span>
+      <p>개입의 예측 가능성은 세계의 복잡도(자유의지 밀도)에 <strong>반비례</strong>한다. 문명이 발달할수록 결과가 크게 갈라진다.</p>
+    </li>
+    <li>
+      <span class="rid">rule.default-track</span>
+      <p>개입하지 않는 한 세계는 실제 지구의 생명 진화·문명사를 그대로 따라간다. 개입한 시점부터 <strong>실제 역사와 갈라지기</strong> 시작한다.</p>
+    </li>
+    <li>
+      <span class="rid">rule.calamity</span>
+      <p>정해진 주기 없이 재앙이 발생한다. 평온한 상태가 너무 오래 이어지면 서술상 재앙이 발생할 압력이 커진다.</p>
+    </li>
+    <li>
+      <span class="rid">rule.former-god-gone</span>
+      <p>선대신은 완전히 퇴장했으며 <strong>어떤 형태로도 다시 개입하지 않는다</strong>. 세계의 모든 결과는 오롯이 당신의 책임으로 귀속된다.</p>
+    </li>
+  </ul>
+</section>
+
+<div class="rule-wrap"><hr class="rule" /></div>
+
+<section>
+  <p class="eyebrow">Tier Scale — 문명 발전단계</p>
+  <h2 style="font-size:1.6rem;">무생물에서 역사가 되기까지</h2>
+  <p class="lede" style="margin-top:0.9rem;">별도 수치 없이, 세계 내 최우세 생명·사회 형태의 실제 발전 수준으로 자연스럽게 판정된다. 대멸종급 재앙이 우세종을 무너뜨리면 이전 단계로 역행할 수도 있다.</p>
+  <div class="tiers">
+    <div class="tier">
+      <span class="num">01</span>
+      <div>
+        <h3>생명의 시대</h3>
+        <p>번개와 화학반응으로 유기물이 태어나고, 자기복제자에서 다세포 생명으로 이어진다. 생존압이 신의 의도를 조금씩 비껴가기 시작한다.</p>
+      </div>
+    </div>
+    <div class="tier">
+      <span class="num">02</span>
+      <div>
+        <h3>복잡 생태계</h3>
+        <p>생명이 뭍으로 번지고 생태계가 복잡해진다. 자연재해와 멸종이 처음으로 실존적 위협이 되며, 우세종의 흥망이 시작된다.</p>
+      </div>
+    </div>
+    <div class="tier">
+      <span class="num">03</span>
+      <div>
+        <h3>지성의 시대</h3>
+        <p>도구를 쥐고 무리 지어 살며 말과 신화가 태어난다. 이때부터 신의 개입은 결과를 보장하지 못하고, 그저 씨앗으로만 던져진다.</p>
+      </div>
+    </div>
+    <div class="tier">
+      <span class="num">04</span>
+      <div>
+        <h3>문명의 시대</h3>
+        <p>정착과 농경이 잉여와 계급, 분쟁을 낳는다. 국가가 서고 무너지길 반복하며, 이제부터는 사실상 인류의 역사다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="rule-wrap"><hr class="rule" /></div>
+
+<section>
+  <p class="eyebrow">Cast — 1회성 등장</p>
+  <div class="char-card">
+    <img src=\"images/earth.png\" alt=\"지구를 두 손으로 건네는 선대신의 전신\" />
+    <div>
+      <h3>선대신</h3>
+      <p class="char-sub">초연한 은퇴자 · 이름 없음, "그"로만 지칭</p>
+      <p>수천 번의 창조와 파괴를 다 겪어버린, 쉬고 싶어 하는 신. 극 중 목표는 오직 "넘겨주고 떠나는 것" — 조언도, 규칙도, 힌트도 남기지 않는다. 프롤로그 이후 다시 등장하지 않으며, 어떤 형태로도 재개입하지 않는다.</p>
+      <ul class="lines">
+        <li>이걸로 몇 개째더라.</li>
+        <li>그런 건 몰라도 돼. 나도 잘 몰랐거든.</li>
+        <li>…그래도 이번 건, 좀 잘됐으면 좋겠네.</li>
+        <li>규칙 같은 건 없어. 대가도 없고. 그냥 네 마음대로 해봐.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="rule-wrap"><hr class="rule" /></div>
+
+<section>
+  <p class="eyebrow">Keyword Book</p>
+  <h2 style="font-size:1.6rem;">세계가 스스로 상상하는 것들</h2>
+  <p class="lede" style="margin-top:0.9rem;">키워드가 감지될 때만 조건부로 불려나오는 조각들 — 어느 쪽도 진실로 확정되지 않는다.</p>
+  <div class="lore-grid">
+    <div class="lore-card">
+      <span class="kw">kb.former-god-myths</span>
+      <h3>옛 신 신화</h3>
+      <p>"옛 신"이나 "떠난 신"이 언급되면, 그것은 그 사회가 스스로 상상해 만든 신화일 뿐 실제 재등장이 아니다. 사회마다 다르게 각색되어 서로 모순될 수 있다.</p>
+    </div>
+    <div class="lore-card">
+      <span class="kw">kb.prior-worlds</span>
+      <h3>이전 세계들</h3>
+      <p>선대신이 프롤로그에서 암시한 "수천 번"의 사례 중 하나를 다큐 톤으로 짧게 언급한다. 회상 수준에 그치며, 실제 재등장이나 개입은 없다.</p>
+    </div>
+  </div>
+</section>
+
+<div class="rule-wrap"><hr class="rule" /></div>
+
+<section>
+  <p class="eyebrow">First Turn</p>
+  <h2 style="font-size:1.6rem;">지금, 무엇을 하겠는가</h2>
+  <div class="start">
+    <p>당신의 손 안에 있던 세계가 허공에 떠오른다. 아직 대기와 바다, 맨땅뿐이다. 해가 뜨고 지지만 그 아래 움직이는 것은 아무것도 없다. 이제부터 1년이 한 턴이다. 아무것도 하지 않으면 세계는 스스로 흘러간다. 손을 대면 그 흐름은 당신이 던진 조건대로 바뀌기 시작하지만, 결과까지 뜻대로 되지는 않는다.</p>
+    <span class="caret">&gt; 첫 개입을 기다리는 중…</span>
+  </div>
+</section>
+
+<footer>
+  <span>신이 세상을 만들 때 — World-Sim Story Chat</span>
+  <span>prologue · start-prompt · integrated-prompt (safe/unsafe) · keyword-book</span>
+</footer>
